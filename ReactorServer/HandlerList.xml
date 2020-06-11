@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serverList>
+    <!-- 미리 서버 종류에 따라 다른 핸들러를 사용할 수 있게 구조를 configure한 것 -->
+    <server name="server1">
+        <handler header="0x5001">StreamSayHelloEventHandler</handler>
+        <handler header="0x6001">StreamUpdateProfileEventHandler</handler>
+    </server>
+    <server name="server2">
+        <handler header="0x5001">StreamSayHelloEventHandler</handler>
+        <handler header="0x6001">StreamUpdateProfileEventHandler</handler>
+    </server>
+</serverList>
