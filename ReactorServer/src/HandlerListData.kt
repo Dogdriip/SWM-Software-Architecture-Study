@@ -2,11 +2,11 @@ import org.simpleframework.xml.Attribute
 import org.simpleframework.xml.ElementList
 import org.simpleframework.xml.Root
 
-class HandlerListData {
-    @ElementList(entry = "handler", inline = true)
-    val handler: List<HandlerData>? = null
-
-    @Attribute
-    val name: String? = null
-
+data class HandlerListData(
+        @field:ElementList(entry = "handler", inline = true)
+        var handler: List<HandlerData>?,
+        @field:Attribute
+        var name: String?
+) {
+    constructor() : this(null, null) {}
 }

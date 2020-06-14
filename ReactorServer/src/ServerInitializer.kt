@@ -19,14 +19,14 @@ fun main() {
         // xml파일을 객체로 변환
         val serverList: ServerListData = serializer.read(ServerListData::class.java, source)
 
+        for (handlerListData: HandlerListData in serverList.server!!) {
 
-        for (handlerListData: HandlerListData in serverList.getServer()) {
+            if (handlerListData.name == "server1") {
 
-            if (handlerListData.getName() == "server1") {
-                val handlerList: List<HandlerData> = handlerListData.getHandler()
+                val handlerList: List<HandlerData> = handlerListData.handler!!
                 for (handler: HandlerData in handlerList) {
                     try {
-                        reactor.registerHandler(handler.getHeader(), Class.forName(handler.getHandler()).kotlin.objectInstance as EventHandler)
+                        reactor.registerHandler(handler.header!!, Class.forName(handler.text!!).newInstance() as EventHandler)
                     } catch (e: InstantiationError) {
                         e.printStackTrace()
                     } catch (e: IllegalAccessException) {
@@ -36,6 +36,7 @@ fun main() {
                     }
                 }
                 break
+
             }
 
         }

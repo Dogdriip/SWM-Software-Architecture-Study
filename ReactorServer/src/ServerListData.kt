@@ -1,7 +1,10 @@
+import org.simpleframework.xml.Element
 import org.simpleframework.xml.ElementList
 import org.simpleframework.xml.Root
 
-class ServerListData {
-    @ElementList(entry = "server", inline = true)
-    val server: List<HandlerListData>? = null
+data class ServerListData(
+        @field:ElementList(entry="server", inline=true)
+        var server: List<HandlerListData>?
+) {
+    constructor() : this(null) {}
 }
